@@ -10,10 +10,18 @@ router.use(express.json());
 
 
 router.get("/balance", middleware, async (req, res) => {
-  const account = await accountmodel.findOne({ userid: req.user.userid });
-  if (!account) return res.status(404).json({ message: "Account not found" });
+  try {
+    const account = await accountmodel.findOne({ userid: req.user.userid });
+const user = await userdbmodel.findById(req.user.userid);
 
-  res.json({ balance: account.balance });
+    if (!account || !user) {
+      return res.status(404).json({ message: "Not found" });
+    }
+
+    res.json({ balance: account.balance, username: user.firstname }); // or user.firstName depending on your schema
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong" });
+  }
 });
 
 
