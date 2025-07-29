@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 export const Appbar = ({ value }) => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export const Appbar = ({ value }) => {
   return (
     <div className="shadow h-14 flex justify-between items-center px-4">
       <div className="font-extrabold text-blue-600 text-3xl">
-        paytm
+       <Link to="/dashboard">Paytm</Link>
       </div>
 
       <div className="flex items-center gap-4">

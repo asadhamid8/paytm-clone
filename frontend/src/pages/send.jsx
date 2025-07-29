@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import axios from "axios";
 import { useState } from 'react';
-
+import { Appbar } from '../components/Appbar';
 export const SendMoney = () => {
     const [searchParams] = useSearchParams();
     const id = searchParams.get("id");
@@ -12,7 +12,9 @@ export const SendMoney = () => {
     };
 
     return <div class="flex justify-center h-screen bg-gray-100">
+        
         <div className="h-full flex flex-col justify-center">
+            
             <div
                 class="border h-min text-card-foreground max-w-md p-4 space-y-8 w-96 bg-white shadow-lg rounded-lg"
             >
